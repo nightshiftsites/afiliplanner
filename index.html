@@ -12,13 +12,14 @@
 <link rel="icon" href="s/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #070B14; --surface: #0D1524; --card: #121C30; --border: #1E2A44;
     --text: #EDF1F9; --muted: #8A94AC; --faint: #525D77;
-    --accent: #3E8BFF; --accent-soft: rgba(62,139,255,.14);
-    --success: #38D982; --danger: #FF5C6A;
+    --blue: #3E8BFF; --violet: #8B5CF6; --cyan: #22D3EE; --pink: #F472B6;
+    --green: #38D982; --amber: #FFB020; --red: #FF5C6A;
+    --grad: linear-gradient(100deg, #3E8BFF 0%, #8B5CF6 55%, #F472B6 100%);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -33,58 +34,65 @@
   /* ---- Nav ---- */
   nav {
     position: sticky; top: 0; z-index: 50;
-    background: rgba(7,11,20,.82); backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
+    background: rgba(7,11,20,.8); backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(62,139,255,.15);
   }
   .nav-in { display: flex; align-items: center; gap: 12px; height: 64px; }
   .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 17px; letter-spacing: -.02em; }
   .logo img { width: 34px; height: 34px; border-radius: 9px; }
+  .logo b { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .nav-spacer { flex: 1; }
   .lang {
     display: flex; border: 1px solid var(--border); border-radius: 999px; overflow: hidden;
-    font-size: 13px; font-weight: 600;
+    font-size: 13px; font-weight: 600; background: rgba(18,28,48,.6);
   }
   .lang button {
     background: none; border: 0; color: var(--muted); padding: 7px 14px; cursor: pointer;
-    font: inherit; font-weight: 600;
+    font: inherit; font-weight: 700;
   }
-  .lang button.on { background: var(--accent-soft); color: var(--accent); }
+  .lang button.on { background: var(--grad); color: #fff; }
   .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    background: var(--accent); color: #fff; font-weight: 700; font-size: 15px;
-    padding: 12px 22px; border-radius: 12px; transition: transform .15s, box-shadow .15s;
-    box-shadow: 0 4px 24px rgba(62,139,255,.35);
+    display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+    background: var(--grad); color: #fff; font-weight: 700; font-size: 15px;
+    padding: 13px 24px; border-radius: 13px; transition: transform .15s, box-shadow .15s, filter .15s;
+    box-shadow: 0 6px 28px rgba(120,90,255,.38);
   }
-  .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 32px rgba(62,139,255,.45); }
+  .btn:hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 10px 36px rgba(120,90,255,.5); }
   .btn.small { padding: 9px 16px; font-size: 13.5px; border-radius: 10px; box-shadow: none; }
   .btn.ghost { background: var(--card); border: 1px solid var(--border); box-shadow: none; color: var(--text); }
+  .btn.ghost:hover { border-color: var(--violet); }
 
   /* ---- Hero ---- */
-  .hero { position: relative; padding: 84px 0 40px; }
-  .hero-glow {
-    position: absolute; top: -180px; left: 50%; transform: translateX(-50%);
-    width: 900px; height: 600px; pointer-events: none;
-    background: radial-gradient(ellipse at center, rgba(62,139,255,.16), transparent 65%);
+  .hero { position: relative; padding: 88px 0 56px; overflow: visible; }
+  .hero-glow, .hero-glow2 {
+    position: absolute; pointer-events: none; border-radius: 50%;
+    filter: blur(10px);
   }
-  .hero-in { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; position: relative; }
+  .hero-glow {
+    top: -220px; right: -60px; width: 720px; height: 640px;
+    background: radial-gradient(ellipse at center, rgba(62,139,255,.20), transparent 62%);
+  }
+  .hero-glow2 {
+    bottom: -180px; left: -140px; width: 640px; height: 560px;
+    background: radial-gradient(ellipse at center, rgba(139,92,246,.16), transparent 62%);
+  }
+  .hero-in { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; position: relative; }
   .eyebrow {
     display: inline-flex; align-items: center; gap: 8px;
-    background: var(--accent-soft); color: var(--accent); font-size: 13px; font-weight: 700;
-    padding: 6px 14px; border-radius: 999px; margin-bottom: 20px;
+    background: rgba(139,92,246,.14); border: 1px solid rgba(139,92,246,.35);
+    color: #C4B5FD; font-size: 13px; font-weight: 700;
+    padding: 7px 15px; border-radius: 999px; margin-bottom: 22px;
   }
-  h1 { font-size: clamp(34px, 5vw, 54px); font-weight: 800; letter-spacing: -.03em; line-height: 1.08; }
-  h1 .grad {
-    background: linear-gradient(90deg, var(--accent), #7fb4ff);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-  }
-  .sub { color: var(--muted); font-size: 18px; line-height: 1.6; margin: 20px 0 30px; max-width: 480px; }
+  h1 { font-size: clamp(34px, 5vw, 56px); font-weight: 900; letter-spacing: -.03em; line-height: 1.06; }
+  h1 .grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .sub { color: var(--muted); font-size: 18px; line-height: 1.65; margin: 22px 0 32px; max-width: 480px; }
   .cta-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
   .cta-note { color: var(--faint); font-size: 13px; }
 
   .phone {
     width: min(300px, 78vw); border-radius: 38px; padding: 10px;
-    background: linear-gradient(160deg, #1a2540, #0c1322);
-    border: 1px solid #263354; box-shadow: 0 30px 80px rgba(0,0,0,.55);
+    background: linear-gradient(160deg, #232f52, #0c1322 60%);
+    border: 1px solid #2c3a61; box-shadow: 0 30px 80px rgba(0,0,0,.6), 0 0 0 1px rgba(62,139,255,.06);
     margin: 0 auto;
   }
   .phone img { width: 100%; height: auto; aspect-ratio: 810 / 1560; display: block; border-radius: 30px; background: #0c1322; }
@@ -93,27 +101,50 @@
   .hero-phones .phone-2 { width: min(235px, 44vw); margin-left: -34px; margin-top: 64px; z-index: 1; opacity: .96; }
 
   /* ---- Sections ---- */
-  section { padding: 72px 0; }
-  .sec-title { font-size: clamp(26px, 3.4vw, 36px); font-weight: 800; letter-spacing: -.02em; text-align: center; }
-  .sec-sub { color: var(--muted); text-align: center; margin: 12px auto 44px; max-width: 560px; font-size: 16.5px; line-height: 1.6; }
+  section { padding: 76px 0; position: relative; }
+  .kicker {
+    display: block; text-align: center; font-size: 13px; font-weight: 800;
+    letter-spacing: .16em; margin-bottom: 12px;
+    background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .sec-title { font-size: clamp(26px, 3.4vw, 38px); font-weight: 800; letter-spacing: -.02em; text-align: center; }
+  .sec-sub { color: var(--muted); text-align: center; margin: 14px auto 46px; max-width: 560px; font-size: 16.5px; line-height: 1.6; }
 
   .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .card {
-    background: var(--card); border: 1px solid var(--border); border-radius: 18px;
-    padding: 26px 24px; transition: transform .18s, border-color .18s;
+    background: linear-gradient(180deg, rgba(30,42,68,.35), rgba(18,28,48,.9));
+    border: 1px solid var(--border); border-radius: 20px;
+    padding: 26px 24px; transition: transform .18s, border-color .18s, box-shadow .18s;
+    position: relative; overflow: hidden;
   }
-  .card:hover { transform: translateY(-3px); border-color: #2c3d63; }
-  .card .ico { font-size: 26px; display: block; margin-bottom: 14px; }
+  .card::before {
+    content: ''; position: absolute; inset: 0 0 auto 0; height: 3px;
+    background: var(--c, var(--blue)); opacity: 0; transition: opacity .18s;
+  }
+  .card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--c, var(--blue)) 55%, var(--border)); box-shadow: 0 14px 40px rgba(0,0,0,.35); }
+  .card:hover::before { opacity: 1; }
+  .card .ico {
+    width: 46px; height: 46px; border-radius: 13px; display: flex; align-items: center; justify-content: center;
+    font-size: 23px; margin-bottom: 16px;
+    background: color-mix(in srgb, var(--c, var(--blue)) 16%, transparent);
+    border: 1px solid color-mix(in srgb, var(--c, var(--blue)) 32%, transparent);
+  }
   .card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; letter-spacing: -.01em; }
   .card p { color: var(--muted); font-size: 14.5px; line-height: 1.6; }
+  .c-blue { --c: #3E8BFF; } .c-violet { --c: #8B5CF6; } .c-green { --c: #38D982; }
+  .c-pink { --c: #F472B6; } .c-amber { --c: #FFB020; } .c-cyan { --c: #22D3EE; }
 
   /* ---- Personas ---- */
   .personas { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
   .persona {
-    background: var(--card); border: 1px solid var(--border); border-radius: 999px;
-    padding: 10px 20px; font-weight: 600; font-size: 14.5px; display: flex; gap: 8px; align-items: center;
+    border-radius: 999px; padding: 11px 22px; font-weight: 700; font-size: 14.5px;
+    display: flex; gap: 9px; align-items: center;
+    background: color-mix(in srgb, var(--c, var(--blue)) 12%, var(--card));
+    border: 1px solid color-mix(in srgb, var(--c, var(--blue)) 40%, transparent);
+    transition: transform .15s;
   }
-  .persona span { font-size: 17px; }
+  .persona:hover { transform: translateY(-2px) scale(1.03); }
+  .persona span { font-size: 18px; }
 
   /* ---- Gallery ---- */
   .gallery {
@@ -125,19 +156,32 @@
   .shot { scroll-snap-align: center; flex: 0 0 auto; text-align: center; }
   .shot .phone { width: 250px; }
   .shot figcaption { color: var(--muted); font-size: 14px; font-weight: 600; margin-top: 14px; }
+  .shot figcaption::before {
+    content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+    background: var(--c, var(--blue)); margin-right: 8px; vertical-align: 1px;
+  }
 
   /* ---- Privacy ---- */
   .privacy {
-    background: var(--card); border: 1px solid var(--border); border-radius: 22px;
-    padding: 44px 36px; text-align: center;
+    background: linear-gradient(140deg, rgba(56,217,130,.10), rgba(18,28,48,.9) 45%);
+    border: 1px solid color-mix(in srgb, #38D982 30%, var(--border)); border-radius: 24px;
+    padding: 46px 36px; text-align: center; position: relative; overflow: hidden;
   }
-  .privacy h2 { font-size: 24px; font-weight: 800; margin-bottom: 12px; }
-  .privacy p { color: var(--muted); max-width: 540px; margin: 0 auto 22px; line-height: 1.65; font-size: 15.5px; }
+  .privacy h2 { font-size: 25px; font-weight: 800; margin-bottom: 12px; }
+  .privacy h2 em { font-style: normal; color: var(--green); }
+  .privacy p { color: var(--muted); max-width: 540px; margin: 0 auto 24px; line-height: 1.65; font-size: 15.5px; }
 
   /* ---- CTA band ---- */
-  .band { text-align: center; padding: 84px 0; }
-  .band h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -.02em; margin-bottom: 14px; }
-  .band p { color: var(--muted); margin-bottom: 30px; font-size: 17px; }
+  .band { text-align: center; padding: 96px 0 100px; position: relative; overflow: hidden; }
+  .band::before {
+    content: ''; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+    width: 780px; height: 480px; pointer-events: none;
+    background: radial-gradient(ellipse at center, rgba(139,92,246,.22), rgba(62,139,255,.10) 50%, transparent 70%);
+  }
+  .band > .wrap { position: relative; }
+  .band h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 900; letter-spacing: -.02em; margin-bottom: 14px; }
+  .band h2 .grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .band p { color: var(--muted); margin-bottom: 32px; font-size: 17px; }
 
   footer { border-top: 1px solid var(--border); padding: 34px 0; }
   .foot { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; color: var(--faint); font-size: 13.5px; }
@@ -158,7 +202,7 @@
 
 <nav>
   <div class="wrap nav-in">
-    <a class="logo" href="#"><img src="s/icon.png" alt=""><span>Afili Planner</span></a>
+    <a class="logo" href="#"><img src="s/icon.png" alt=""><span>Afili <b>Planner</b></span></a>
     <div class="nav-spacer"></div>
     <div class="lang" role="group" aria-label="Language">
       <button id="btn-tr" onclick="setLang('tr')">TR</button>
@@ -170,6 +214,7 @@
 
 <header class="hero">
   <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
   <div class="wrap hero-in">
     <div>
       <span class="eyebrow" data-i18n="eyebrow">🤖 Yapay zekâ koçlu günlük planlayıcı</span>
@@ -192,50 +237,55 @@
 
 <section id="shots" style="padding-top: 24px;">
   <div class="wrap">
+    <span class="kicker" data-i18n="gKick">EKRANLAR</span>
     <h2 class="sec-title" data-i18n="gTitle">İçeriden görünüm</h2>
     <p class="sec-sub" data-i18n="gSub">Gerçek ekranlar — olduğu gibi.</p>
   </div>
   <div class="gallery">
-    <figure class="shot"><div class="phone"><img data-shot="plan" alt="" width="810" height="1560" loading="lazy"></div><figcaption data-i18n="gPlan">Plan — takvim görünümü</figcaption></figure>
-    <figure class="shot"><div class="phone"><img data-shot="plan-liste" alt="" width="810" height="1560" loading="lazy"></div><figcaption data-i18n="gPlanL">Plan — liste görünümü</figcaption></figure>
-    <figure class="shot"><div class="phone"><img data-shot="koc" alt="" width="810" height="1560" loading="lazy"></div><figcaption data-i18n="gKoc">Koç — yaz ya da konuş</figcaption></figure>
-    <figure class="shot"><div class="phone"><img data-shot="takip" alt="" width="810" height="1560" loading="lazy"></div><figcaption data-i18n="gTakip">Takip — tek dokunuşla işaretle</figcaption></figure>
-    <figure class="shot"><div class="phone"><img data-shot="istatistik" alt="" width="810" height="1560" loading="lazy"></div><figcaption data-i18n="gStats">İstatistik — ilerlemeni gör</figcaption></figure>
-    <figure class="shot"><div class="phone"><img data-shot="maskot" alt="" width="810" height="1560" loading="lazy"></div><figcaption data-i18n="gMaskot">Raf — gününe ortak maskot</figcaption></figure>
+    <figure class="shot c-blue"><div class="phone"><img data-shot="plan" alt="" width="810" height="1560" loading="lazy"></div><figcaption data-i18n="gPlan">Plan — takvim görünümü</figcaption></figure>
+    <figure class="shot c-cyan"><div class="phone"><img data-shot="plan-liste" alt="" width="810" height="1560" loading="lazy"></div><figcaption data-i18n="gPlanL">Plan — liste görünümü</figcaption></figure>
+    <figure class="shot c-violet"><div class="phone"><img data-shot="koc" alt="" width="810" height="1560" loading="lazy"></div><figcaption data-i18n="gKoc">Koç — yaz ya da konuş</figcaption></figure>
+    <figure class="shot c-green"><div class="phone"><img data-shot="takip" alt="" width="810" height="1560" loading="lazy"></div><figcaption data-i18n="gTakip">Takip — tek dokunuşla işaretle</figcaption></figure>
+    <figure class="shot c-amber"><div class="phone"><img data-shot="istatistik" alt="" width="810" height="1560" loading="lazy"></div><figcaption data-i18n="gStats">İstatistik — ilerlemeni gör</figcaption></figure>
+    <figure class="shot c-pink"><div class="phone"><img data-shot="maskot" alt="" width="810" height="1560" loading="lazy"></div><figcaption data-i18n="gMaskot">Raf — gününe ortak maskot</figcaption></figure>
   </div>
 </section>
+
 <section id="personas" style="padding-top: 0;">
   <div class="wrap">
+    <span class="kicker" data-i18n="pKick">KOÇLAR</span>
     <h2 class="sec-title" data-i18n="pTitle">Koçunu sen seç</h2>
     <p class="sec-sub" data-i18n="pSub">Aynı beyin, beş farklı karakter. Nasıl motive oluyorsan öyle konuşur.</p>
     <div class="personas">
-      <div class="persona"><span>😎</span><em data-i18n="p1" style="font-style:normal">Kanka</em></div>
-      <div class="persona"><span>🎩</span><em data-i18n="p2" style="font-style:normal">Centilmen</em></div>
-      <div class="persona"><span>🎖️</span><em data-i18n="p3" style="font-style:normal">Komutan</em></div>
-      <div class="persona"><span>🦉</span><em data-i18n="p4" style="font-style:normal">Bilge</em></div>
-      <div class="persona"><span>🔥</span><em data-i18n="p5" style="font-style:normal">Hoca</em></div>
-    </div>
-  </div>
-</section>
-<section id="features">
-  <div class="wrap">
-    <h2 class="sec-title" data-i18n="fTitle">Az düğme, çok iş</h2>
-    <p class="sec-sub" data-i18n="fSub">Her şey tek dokunuş uzağında. Karmaşık menüler yerine seni tanıyan bir koç.</p>
-    <div class="grid">
-      <div class="card"><span class="ico">🤖</span><h3 data-i18n="f1t">Koçun Raf</h3><p data-i18n="f1p">Yazarak ya da konuşarak anlat: "yarın 14.00'e diş randevusu ekle" de, gerisini o halletsin. Planını okur, görev ekler, seriler kırılmadan seni dürter.</p></div>
-      <div class="card"><span class="ico">🗓️</span><h3 data-i18n="f2t">Günün tek ekranda</h3><p data-i18n="f2p">Saatli zaman çizelgesi, tekrarlayan görevler, günün yıldızlı işi ve sesli görev ekleme. Yapılan yeşil, kaçan kırmızı — günün tek bakışta okunur.</p></div>
-      <div class="card"><span class="ico">✅</span><h3 data-i18n="f3t">Alışkanlık takibi</h3><p data-i18n="f3p">Su, spor, uyku, kitap, takviye... Saatli hatırlatmalar, stok takibi, içindekilerle karışım kaydı ve şehrine göre 5 vakit hatırlatma.</p></div>
-      <div class="card"><span class="ico">💭</span><h3 data-i18n="f4t">Duygular ve akşam ritüeli</h3><p data-i18n="f4p">Duygu çarkından seç, tek satır not düş. Zamanla örüntülerini gösterir: hangi günlerin iyi gidiyor, ne seni zorluyor.</p></div>
-      <div class="card"><span class="ico">🏆</span><h3 data-i18n="f5t">Seriler ve haftalık özet</h3><p data-i18n="f5p">Maskotun Raf gününe göre sevinir, meraklanır, bazen sitem eder. Paylaşılabilir haftalık kartlar ve mini oyun Raf'ın Kulesi seni oyunda tutar.</p></div>
-      <div class="card"><span class="ico">🔒</span><h3 data-i18n="f6t">Gizlilik önce</h3><p data-i18n="f6p">Hesap yok, reklam yok. Verilerin telefonunda durur; yedeğini sen alır, sen taşırsın. Koçla konuştukların saklanmaz.</p></div>
+      <div class="persona c-amber"><span>😎</span><em data-i18n="p1" style="font-style:normal">Kanka</em></div>
+      <div class="persona c-blue"><span>🎩</span><em data-i18n="p2" style="font-style:normal">Centilmen</em></div>
+      <div class="persona c-green"><span>🎖️</span><em data-i18n="p3" style="font-style:normal">Komutan</em></div>
+      <div class="persona c-violet"><span>🦉</span><em data-i18n="p4" style="font-style:normal">Bilge</em></div>
+      <div class="persona c-pink"><span>🔥</span><em data-i18n="p5" style="font-style:normal">Hoca</em></div>
     </div>
   </div>
 </section>
 
-<section style="padding-top: 24px;">
+<section id="features" style="padding-top: 24px;">
+  <div class="wrap">
+    <span class="kicker" data-i18n="fKick">ÖZELLİKLER</span>
+    <h2 class="sec-title" data-i18n="fTitle">Az düğme, çok iş</h2>
+    <p class="sec-sub" data-i18n="fSub">Her şey tek dokunuş uzağında. Karmaşık menüler yerine seni tanıyan bir koç.</p>
+    <div class="grid">
+      <div class="card c-violet"><span class="ico">🤖</span><h3 data-i18n="f1t">Koçun Raf</h3><p data-i18n="f1p">Yazarak ya da konuşarak anlat: "yarın 14.00'e diş randevusu ekle" de, gerisini o halletsin. Planını okur, görev ekler, seriler kırılmadan seni dürter.</p></div>
+      <div class="card c-blue"><span class="ico">🗓️</span><h3 data-i18n="f2t">Günün tek ekranda</h3><p data-i18n="f2p">Saatli zaman çizelgesi, tekrarlayan görevler, günün en önemli işi ve sesli görev ekleme. Yapılan yeşil, kaçan kırmızı — günün tek bakışta okunur.</p></div>
+      <div class="card c-green"><span class="ico">✅</span><h3 data-i18n="f3t">Alışkanlık takibi</h3><p data-i18n="f3p">Su, spor, uyku, kitap, takviye... Saatli hatırlatmalar, stok takibi, içindekilerle karışım kaydı ve şehrine göre 5 vakit hatırlatma.</p></div>
+      <div class="card c-pink"><span class="ico">💭</span><h3 data-i18n="f4t">Duygular ve akşam ritüeli</h3><p data-i18n="f4p">Duygu çarkından seç, tek satır not düş. Zamanla örüntülerini gösterir: hangi günlerin iyi gidiyor, ne seni zorluyor.</p></div>
+      <div class="card c-amber"><span class="ico">🏆</span><h3 data-i18n="f5t">Seriler ve haftalık özet</h3><p data-i18n="f5p">Maskotun Raf gününe göre sevinir, meraklanır, bazen sitem eder. Paylaşılabilir haftalık kartlar ve mini oyun Raf'ın Kulesi seni oyunda tutar.</p></div>
+      <div class="card c-cyan"><span class="ico">🔒</span><h3 data-i18n="f6t">Gizlilik önce</h3><p data-i18n="f6p">Hesap yok, reklam yok. Verilerin telefonunda durur; yedeğini sen alır, sen taşırsın. Koçla konuştukların saklanmaz.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top: 12px;">
   <div class="wrap">
     <div class="privacy">
-      <h2 data-i18n="prTitle">Verilerin sende kalır</h2>
+      <h2 data-i18n-html="prTitle">Verilerin <em>sende</em> kalır</h2>
       <p data-i18n="prText">Afili Planner hesap açtırmaz, reklam göstermez, verini satmaz. Her şey telefonunda yaşar; koçla konuştukların yalnızca yanıt üretmek için işlenir ve saklanmaz.</p>
       <a class="btn ghost small" href="privacy.html" data-i18n="prLink">Gizlilik Politikası</a>
     </div>
@@ -244,7 +294,7 @@
 
 <section class="band">
   <div class="wrap">
-    <h2 data-i18n="bTitle">Bugün başla, Raf seni bekliyor</h2>
+    <h2><span data-i18n="bTitle1">Bugün başla,</span> <span class="grad" data-i18n="bTitle2">Raf seni bekliyor</span></h2>
     <p data-i18n="bSub">Ücretsiz indir — 7 gün boyunca her şey açık.</p>
     <a class="btn" href="https://play.google.com/store/apps/details?id=com.afili.aura"><span data-i18n="cta2">Google Play'den indir</span></a>
   </div>
@@ -255,6 +305,8 @@
     <span>© 2026 Afili Labs</span>
     <span>·</span>
     <a href="https://afiliplanner.com">afiliplanner.com</a>
+    <span>·</span>
+    <a href="mailto:support@afiliplanner.com">support@afiliplanner.com</a>
     <div class="nav-spacer"></div>
     <a href="privacy.html" data-i18n="prLink2">Gizlilik</a>
   </div>
@@ -270,10 +322,11 @@ const I18N = {
     sub: 'Günlük plan, alışkanlık takibi ve cebinde yaşayan yapay zekâ koçun Raf — hepsi tek, sade uygulamada. Hesap yok, reklam yok, karmaşa yok.',
     cta: "Google Play'den indir", cta2: "Google Play'den indir",
     ctaNote: 'Android · Türkçe & İngilizce',
+    gKick: 'EKRANLAR', pKick: 'KOÇLAR', fKick: 'ÖZELLİKLER',
     fTitle: 'Az düğme, çok iş',
     fSub: 'Her şey tek dokunuş uzağında. Karmaşık menüler yerine seni tanıyan bir koç.',
     f1t: 'Koçun Raf', f1p: 'Yazarak ya da konuşarak anlat: "yarın 14.00\'e diş randevusu ekle" de, gerisini o halletsin. Planını okur, görev ekler, seriler kırılmadan seni dürter.',
-    f2t: 'Günün tek ekranda', f2p: 'Saatli zaman çizelgesi, tekrarlayan görevler, günün yıldızlı işi ve sesli görev ekleme. Yapılan yeşil, kaçan kırmızı — günün tek bakışta okunur.',
+    f2t: 'Günün tek ekranda', f2p: 'Saatli zaman çizelgesi, tekrarlayan görevler, günün en önemli işi ve sesli görev ekleme. Yapılan yeşil, kaçan kırmızı — günün tek bakışta okunur.',
     f3t: 'Alışkanlık takibi', f3p: 'Su, spor, uyku, kitap, takviye... Saatli hatırlatmalar, stok takibi, içindekilerle karışım kaydı ve şehrine göre 5 vakit hatırlatma.',
     f4t: 'Duygular ve akşam ritüeli', f4p: 'Duygu çarkından seç, tek satır not düş. Zamanla örüntülerini gösterir: hangi günlerin iyi gidiyor, ne seni zorluyor.',
     f5t: 'Seriler ve haftalık özet', f5p: "Maskotun Raf gününe göre sevinir, meraklanır, bazen sitem eder. Paylaşılabilir haftalık kartlar ve mini oyun Raf'ın Kulesi seni oyunda tutar.",
@@ -284,10 +337,10 @@ const I18N = {
     gPlan: 'Plan — takvim görünümü', gPlanL: 'Plan — liste görünümü', gKoc: 'Koç — yaz ya da konuş',
     gTakip: 'Takip — tek dokunuşla işaretle', gStats: 'İstatistik — ilerlemeni gör',
     gMaskot: 'Raf — gününe ortak maskot',
-    prTitle: 'Verilerin sende kalır',
+    prTitle: 'Verilerin <em>sende</em> kalır',
     prText: 'Afili Planner hesap açtırmaz, reklam göstermez, verini satmaz. Her şey telefonunda yaşar; koçla konuştukların yalnızca yanıt üretmek için işlenir ve saklanmaz.',
     prLink: 'Gizlilik Politikası', prLink2: 'Gizlilik',
-    bTitle: 'Bugün başla, Raf seni bekliyor', bSub: 'Ücretsiz indir — 7 gün boyunca her şey açık.',
+    bTitle1: 'Bugün başla,', bTitle2: 'Raf seni bekliyor', bSub: 'Ücretsiz indir — 7 gün boyunca her şey açık.',
   },
   en: {
     title: 'Afili Planner — Plan & Coach',
@@ -297,6 +350,7 @@ const I18N = {
     sub: 'Daily planning, habit tracking, and Raf — the AI coach living in your pocket. One simple app. No account, no ads, no clutter.',
     cta: 'Get it on Google Play', cta2: 'Get it on Google Play',
     ctaNote: 'Android · English & Turkish',
+    gKick: 'SCREENS', pKick: 'COACHES', fKick: 'FEATURES',
     fTitle: 'Fewer buttons, more done',
     fSub: 'Everything is one tap away. Instead of nested menus, a coach who knows you.',
     f1t: 'Raf, your coach', f1p: 'Type or talk: say "add a dentist appointment tomorrow at 2pm" and let him handle it. He reads your plan, adds tasks, and nudges you before a streak breaks.',
@@ -311,15 +365,14 @@ const I18N = {
     gPlan: 'Plan — calendar view', gPlanL: 'Plan — list view', gKoc: 'Coach — type or talk',
     gTakip: 'Track — check off with one tap', gStats: 'Stats — see your progress',
     gMaskot: 'Raf — a mascot living your day',
-    prTitle: 'Your data stays with you',
+    prTitle: 'Your data stays <em>with you</em>',
     prText: 'Afili Planner never asks for an account, shows no ads, and never sells your data. Everything lives on your phone; coach conversations are processed only to generate a reply and never stored.',
     prLink: 'Privacy Policy', prLink2: 'Privacy',
-    bTitle: 'Start today — Raf is waiting', bSub: 'Free to download — everything unlocked for 7 days.',
+    bTitle1: 'Start today —', bTitle2: 'Raf is waiting', bSub: 'Free to download — everything unlocked for 7 days.',
   },
 };
 
 const BASE = location.pathname.endsWith('/') ? location.pathname : location.pathname + '/';
-const SHOT_NAMES = ['plan', 'koc', 'takip', 'istatistik', 'maskot'];
 
 function setLang(lang) {
   const dict = I18N[lang];
@@ -328,6 +381,10 @@ function setLang(lang) {
   for (const el of document.querySelectorAll('[data-i18n]')) {
     const key = el.getAttribute('data-i18n');
     if (dict[key]) el.textContent = dict[key];
+  }
+  for (const el of document.querySelectorAll('[data-i18n-html]')) {
+    const key = el.getAttribute('data-i18n-html');
+    if (dict[key]) el.innerHTML = dict[key];
   }
   // Görseller de dile göre değişir
   document.getElementById('hero-shot').src = BASE + 's/' + lang + '-plan.png';

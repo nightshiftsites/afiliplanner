@@ -3,66 +3,206 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Afili Planner — Gizlilik Politikası / Privacy Policy</title>
+<title>Gizlilik Politikası — Afili Planner</title>
+<meta name="description" content="Afili Planner gizlilik politikası. Verilerin telefonunda kalır; hesap yok, reklam yok.">
+<link rel="icon" href="s/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  body { font-family: -apple-system, Segoe UI, Roboto, sans-serif; max-width: 720px;
-         margin: 0 auto; padding: 24px 16px 64px; color: #1c2430; line-height: 1.6; }
-  h1 { font-size: 1.6rem; } h2 { font-size: 1.15rem; margin-top: 2rem; }
-  hr { border: none; border-top: 1px solid #d8dde5; margin: 3rem 0; }
-  .muted { color: #5a6675; font-size: .9rem; }
+  :root {
+    --bg: #070B14; --card: #121C30; --border: #1E2A44;
+    --text: #EDF1F9; --muted: #8A94AC; --faint: #525D77;
+    --blue: #3E8BFF; --violet: #8B5CF6; --green: #38D982;
+    --pink: #F472B6; --amber: #FFB020; --cyan: #22D3EE;
+    --grad: linear-gradient(100deg, #3E8BFF 0%, #8B5CF6 55%, #F472B6 100%);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: 'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(7,11,20,.8); backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(62,139,255,.15);
+  }
+  .nav-in {
+    max-width: 820px; margin: 0 auto; padding: 0 24px;
+    display: flex; align-items: center; gap: 12px; height: 64px;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 17px; color: var(--text); }
+  .logo:hover { text-decoration: none; }
+  .logo img { width: 34px; height: 34px; border-radius: 9px; }
+  .logo b { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .spacer { flex: 1; }
+  .lang {
+    display: flex; border: 1px solid var(--border); border-radius: 999px; overflow: hidden;
+    font-size: 13px; font-weight: 700; background: rgba(18,28,48,.6);
+  }
+  .lang button { background: none; border: 0; color: var(--muted); padding: 7px 14px; cursor: pointer; font: inherit; font-weight: 700; }
+  .lang button.on { background: var(--grad); color: #fff; }
+
+  main { max-width: 820px; margin: 0 auto; padding: 56px 24px 80px; }
+  .glow {
+    position: fixed; top: -260px; left: 50%; transform: translateX(-50%);
+    width: 900px; height: 560px; pointer-events: none; z-index: 0;
+    background: radial-gradient(ellipse at center, rgba(62,139,255,.13), transparent 65%);
+  }
+  article { position: relative; z-index: 1; }
+  h1 { font-size: clamp(28px, 4.5vw, 40px); font-weight: 900; letter-spacing: -.02em; line-height: 1.15; }
+  h1 .grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .updated { color: var(--faint); font-size: 14px; margin: 14px 0 36px; }
+  .lede {
+    background: linear-gradient(140deg, rgba(56,217,130,.10), rgba(18,28,48,.9) 50%);
+    border: 1px solid rgba(56,217,130,.3); border-radius: 18px;
+    padding: 22px 24px; margin-bottom: 36px; line-height: 1.65; font-size: 15.5px;
+  }
+  section.p {
+    background: var(--card); border: 1px solid var(--border); border-radius: 18px;
+    padding: 24px; margin-bottom: 16px;
+  }
+  section.p h2 {
+    font-size: 17px; font-weight: 800; margin-bottom: 10px; letter-spacing: -.01em;
+    display: flex; align-items: center; gap: 10px;
+  }
+  section.p h2::before {
+    content: ''; width: 10px; height: 10px; border-radius: 3px;
+    background: var(--c, var(--blue)); flex: 0 0 auto;
+  }
+  section.p p { color: var(--muted); line-height: 1.7; font-size: 15px; }
+  section.p p + p { margin-top: 10px; }
+  .c-blue { --c: #3E8BFF; } .c-violet { --c: #8B5CF6; } .c-green { --c: #38D982; }
+  .c-pink { --c: #F472B6; } .c-amber { --c: #FFB020; } .c-cyan { --c: #22D3EE; }
+  footer {
+    max-width: 820px; margin: 0 auto; padding: 26px 24px 40px;
+    color: var(--faint); font-size: 13.5px; display: flex; gap: 16px; flex-wrap: wrap;
+    border-top: 1px solid var(--border);
+  }
+  [hidden] { display: none !important; }
 </style>
 </head>
 <body>
-<h1>Afili Planner — Gizlilik Politikası</h1>
-<p class="muted">Son güncelleme: 27 Ağustos 2026 · Geliştirici: afili (auramaskot@gmail.com)</p>
+<div class="glow"></div>
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="./"><img src="s/icon.png" alt=""><span>Afili <b>Planner</b></span></a>
+    <div class="spacer"></div>
+    <div class="lang">
+      <button id="btn-tr" onclick="setLang('tr')">TR</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</nav>
 
-<h2>Özet</h2>
-<p>Afili Planner bir kişisel planlayıcı ve yapay zekâ koçu uygulamasıdır. Verilerin esas olarak <strong>telefonunda</strong> durur. Hesap açılmaz, reklam yoktur, verilerin satılmaz.</p>
+<main>
+<!-- ==================== TÜRKÇE ==================== -->
+<article id="art-tr">
+  <h1><span class="grad">Gizlilik</span> Politikası</h1>
+  <p class="updated">Son güncelleme: 2 Eylül 2026 · Geliştirici: Afili Labs · <a href="mailto:support@afiliplanner.com">support@afiliplanner.com</a></p>
 
-<h2>Cihazında kalan veriler</h2>
-<p>Görevlerin, takiplerin (ilaç, spor, ölçümler), günlük ve duygu kayıtların, hafıza notların, olumlamaların ve ses kayıtların yalnızca cihazında saklanır. Bu verileri dilediğinde Ayarlar &gt; Yedekleme ile dışa aktarabilir veya uygulamayı silerek tamamen yok edebilirsin.</p>
+  <div class="lede">
+    Afili Planner bir kişisel planlayıcı ve yapay zekâ koçu uygulamasıdır. Verilerin esas olarak
+    <strong>telefonunda</strong> durur. Hesap açılmaz, reklam yoktur, verilerin satılmaz.
+  </div>
 
-<h2>Sunucuya giden veriler</h2>
-<p>Yalnızca yapay zekâ koçu özelliğini kullandığında: mesajın ve koçun sana doğru öneri verebilmesi için gereken bağlam (plan, takip ve günlük özetin, adın/hitabın) şifreli bağlantıyla (HTTPS) sunucumuza iletilir ve yanıt üretmek için yapay zekâ sağlayıcısına (DeepSeek ve/veya Anthropic) aktarılır. Bu içerikler sunucumuzda saklanmaz; yalnızca yanıtın üretilmesi için işlenir.</p>
-<p>Hizmetin kötüye kullanımını önlemek için rastgele üretilmiş anonim bir cihaz kimliği ile günlük kullanım sayısı ve teknik ölçümler (istek başına işlenen veri miktarı) tutulur. Bu kimlik; adın, e-postan veya reklam kimliğinle ilişkilendirilmez.</p>
+  <section class="p c-green">
+    <h2>Cihazında kalan veriler</h2>
+    <p>Görevlerin, takiplerin (takviye, spor, ölçümler), günlük ve duygu kayıtların, hafıza notların, olumlamaların ve ses kayıtların yalnızca cihazında saklanır. Bu verileri dilediğinde Ayarlar → Yedekleme ile dışa aktarabilir veya uygulamayı silerek tamamen yok edebilirsin.</p>
+  </section>
 
-<h2>İzinler</h2>
-<p>Mikrofon (sesli görev girişi ve olumlama kaydı — ses cihazında kalır), bildirimler (görev/takip hatırlatmaları), alarm kurma (sen istediğinde). İzinler isteğe bağlıdır; vermezsen ilgili özellik devre dışı kalır.</p>
+  <section class="p c-violet">
+    <h2>Sunucuya giden veriler</h2>
+    <p>Yalnızca yapay zekâ koçu özelliğini kullandığında: mesajın ve koçun sana doğru öneri verebilmesi için gereken bağlam (plan, takip ve günlük özetin, adın/hitabın) şifreli bağlantıyla (HTTPS) sunucumuza iletilir ve yanıt üretmek için yapay zekâ sağlayıcısına (DeepSeek ve/veya Anthropic) aktarılır. Bu içerikler sunucumuzda saklanmaz; yalnızca yanıtın üretilmesi için işlenir.</p>
+    <p>Hizmetin kötüye kullanımını önlemek için rastgele üretilmiş anonim bir cihaz kimliği ile günlük kullanım sayısı ve teknik ölçümler (istek başına işlenen veri miktarı) tutulur. Bu kimlik; adın, e-postan veya reklam kimliğinle ilişkilendirilmez.</p>
+  </section>
 
-<h2>Ödemeler</h2>
-<p>Abonelik ödemeleri Google Play üzerinden alınır; kart bilgilerine erişimimiz yoktur. Abonelik durumunun doğrulanması için satın alma bilgisi ödeme altyapısı sağlayıcımız RevenueCat ile paylaşılabilir.</p>
+  <section class="p c-blue">
+    <h2>İzinler</h2>
+    <p>Mikrofon (sesli görev girişi ve olumlama kaydı — ses cihazında kalır), bildirimler (görev/takip hatırlatmaları), alarm kurma (sen istediğinde). İzinler isteğe bağlıdır; vermezsen ilgili özellik devre dışı kalır.</p>
+  </section>
 
-<h2>Çocuklar</h2>
-<p>Afili Planner 13 yaş altına yönelik değildir.</p>
+  <section class="p c-amber">
+    <h2>Ödemeler</h2>
+    <p>Abonelik ödemeleri Google Play üzerinden alınır; kart bilgilerine erişimimiz yoktur. Abonelik durumunun doğrulanması için satın alma bilgisi ödeme altyapısı sağlayıcımız RevenueCat ile paylaşılabilir.</p>
+  </section>
 
-<h2>İletişim ve haklar</h2>
-<p>Sorular ve veri talepleri için: <a href="mailto:auramaskot@gmail.com">auramaskot@gmail.com</a>. Sunucu tarafında tutulan anonim kullanım kayıtlarının silinmesini talep edebilirsin.</p>
+  <section class="p c-pink">
+    <h2>Çocuklar</h2>
+    <p>Afili Planner 13 yaş altına yönelik değildir.</p>
+  </section>
 
-<hr>
+  <section class="p c-cyan">
+    <h2>İletişim ve hakların</h2>
+    <p>Sorular ve veri talepleri için: <a href="mailto:support@afiliplanner.com">support@afiliplanner.com</a>. Sunucu tarafında tutulan anonim kullanım kayıtlarının silinmesini talep edebilirsin.</p>
+  </section>
+</article>
 
-<h1>Afili Planner — Privacy Policy</h1>
-<p class="muted">Last updated: August 27, 2026 · Developer: afili (auramaskot@gmail.com)</p>
+<!-- ==================== ENGLISH ==================== -->
+<article id="art-en" hidden>
+  <h1><span class="grad">Privacy</span> Policy</h1>
+  <p class="updated">Last updated: September 2, 2026 · Developer: Afili Labs · <a href="mailto:support@afiliplanner.com">support@afiliplanner.com</a></p>
 
-<h2>Summary</h2>
-<p>Afili Planner is a personal planner and AI coach. Your data lives primarily <strong>on your phone</strong>. No account is required, there are no ads, and your data is never sold.</p>
+  <div class="lede">
+    Afili Planner is a personal planner and AI coach. Your data lives primarily
+    <strong>on your phone</strong>. No account is required, there are no ads, and your data is never sold.
+  </div>
 
-<h2>Data that stays on your device</h2>
-<p>Your tasks, trackers (medication, workouts, measurements), journal and emotion entries, memory notes, affirmations and voice recordings are stored only on your device. You can export them anytime via Settings &gt; Backup, or erase everything by uninstalling the app.</p>
+  <section class="p c-green">
+    <h2>Data that stays on your device</h2>
+    <p>Your tasks, trackers (supplements, workouts, measurements), journal and emotion entries, memory notes, affirmations and voice recordings are stored only on your device. You can export them anytime via Settings → Backup, or erase everything by uninstalling the app.</p>
+  </section>
 
-<h2>Data sent to our server</h2>
-<p>Only when you use the AI coach: your message and the context the coach needs (your plan, tracker and journal summary, your name/preferred address) are sent over HTTPS to our server and passed to an AI provider (DeepSeek and/or Anthropic) to generate the reply. This content is not stored on our server; it is processed solely to produce the response.</p>
-<p>To prevent abuse, we keep a randomly generated anonymous device identifier together with daily usage counts and technical metering (amount of data processed per request). This identifier is not linked to your name, email, or advertising ID.</p>
+  <section class="p c-violet">
+    <h2>Data sent to our server</h2>
+    <p>Only when you use the AI coach: your message and the context the coach needs (your plan, tracker and journal summary, your name/preferred address) are sent over HTTPS to our server and passed to an AI provider (DeepSeek and/or Anthropic) to generate the reply. This content is not stored on our server; it is processed solely to produce the response.</p>
+    <p>To prevent abuse, we keep a randomly generated anonymous device identifier together with daily usage counts and technical metering (amount of data processed per request). This identifier is not linked to your name, email, or advertising ID.</p>
+  </section>
 
-<h2>Permissions</h2>
-<p>Microphone (voice input and affirmation recordings — audio stays on device), notifications (task/tracker reminders), alarm scheduling (only when you ask). All permissions are optional.</p>
+  <section class="p c-blue">
+    <h2>Permissions</h2>
+    <p>Microphone (voice input and affirmation recordings — audio stays on device), notifications (task/tracker reminders), alarm scheduling (only when you ask). All permissions are optional; declining one only disables that feature.</p>
+  </section>
 
-<h2>Payments</h2>
-<p>Subscriptions are billed through Google Play; we never see your card details. Purchase state may be shared with our billing provider RevenueCat to verify your subscription.</p>
+  <section class="p c-amber">
+    <h2>Payments</h2>
+    <p>Subscriptions are billed through Google Play; we never see your card details. Purchase state may be shared with our billing provider RevenueCat to verify your subscription.</p>
+  </section>
 
-<h2>Children</h2>
-<p>Afili Planner is not directed at children under 13.</p>
+  <section class="p c-pink">
+    <h2>Children</h2>
+    <p>Afili Planner is not directed at children under 13.</p>
+  </section>
 
-<h2>Contact & your rights</h2>
-<p>Questions and data requests: <a href="mailto:auramaskot@gmail.com">auramaskot@gmail.com</a>. You may request deletion of the anonymous server-side usage records.</p>
+  <section class="p c-cyan">
+    <h2>Contact & your rights</h2>
+    <p>Questions and data requests: <a href="mailto:support@afiliplanner.com">support@afiliplanner.com</a>. You may request deletion of the anonymous server-side usage records.</p>
+  </section>
+</article>
+</main>
+
+<footer>
+  <span>© 2026 Afili Labs</span>
+  <span>·</span>
+  <a href="./" style="color: var(--faint)">afiliplanner.com</a>
+</footer>
+
+<script>
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  document.title = lang === 'tr' ? 'Gizlilik Politikası — Afili Planner' : 'Privacy Policy — Afili Planner';
+  document.getElementById('art-tr').hidden = lang !== 'tr';
+  document.getElementById('art-en').hidden = lang !== 'en';
+  document.getElementById('btn-tr').classList.toggle('on', lang === 'tr');
+  document.getElementById('btn-en').classList.toggle('on', lang === 'en');
+  try { localStorage.setItem('afili-lang', lang); } catch {}
+}
+let lang = 'tr';
+try { lang = localStorage.getItem('afili-lang') || (navigator.language?.toLowerCase().startsWith('tr') ? 'tr' : 'en'); } catch {}
+setLang(lang === 'en' ? 'en' : 'tr');
+</script>
 </body>
 </html>
