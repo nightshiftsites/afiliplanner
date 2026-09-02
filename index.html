@@ -88,6 +88,9 @@
     margin: 0 auto;
   }
   .phone img { width: 100%; height: auto; aspect-ratio: 810 / 1560; display: block; border-radius: 30px; background: #0c1322; }
+  .hero-phones { display: flex; justify-content: center; align-items: flex-start; }
+  .hero-phones .phone { width: min(270px, 56vw); margin: 0; z-index: 2; }
+  .hero-phones .phone-2 { width: min(235px, 44vw); margin-left: -34px; margin-top: 64px; z-index: 1; opacity: .96; }
 
   /* ---- Sections ---- */
   section { padding: 72px 0; }
@@ -180,25 +183,27 @@
         <span class="cta-note" data-i18n="ctaNote">Android · Türkçe & İngilizce</span>
       </div>
     </div>
-    <div class="phone"><img id="hero-shot" alt="Afili Planner" width="810" height="1560"></div>
+    <div class="hero-phones">
+      <div class="phone"><img id="hero-shot" alt="Afili Planner" width="810" height="1560"></div>
+      <div class="phone phone-2"><img id="hero-shot-2" alt="" width="810" height="1560"></div>
+    </div>
   </div>
 </header>
 
-<section id="features">
+<section id="shots" style="padding-top: 24px;">
   <div class="wrap">
-    <h2 class="sec-title" data-i18n="fTitle">Az düğme, çok iş</h2>
-    <p class="sec-sub" data-i18n="fSub">Her şey tek dokunuş uzağında. Karmaşık menüler yerine seni tanıyan bir koç.</p>
-    <div class="grid">
-      <div class="card"><span class="ico">🤖</span><h3 data-i18n="f1t">Koçun Raf</h3><p data-i18n="f1p">Yazarak ya da konuşarak anlat: "yarın 14.00'e diş randevusu ekle" de, gerisini o halletsin. Planını okur, görev ekler, seriler kırılmadan seni dürter.</p></div>
-      <div class="card"><span class="ico">🗓️</span><h3 data-i18n="f2t">Günün tek ekranda</h3><p data-i18n="f2p">Saatli zaman çizelgesi, tekrarlayan görevler, günün yıldızlı işi ve sesli görev ekleme. Yapılan yeşil, kaçan kırmızı — günün tek bakışta okunur.</p></div>
-      <div class="card"><span class="ico">✅</span><h3 data-i18n="f3t">Alışkanlık takibi</h3><p data-i18n="f3p">Su, spor, uyku, kitap, takviye... Saatli hatırlatmalar, stok takibi, içindekilerle karışım kaydı ve şehrine göre 5 vakit hatırlatma.</p></div>
-      <div class="card"><span class="ico">💭</span><h3 data-i18n="f4t">Duygular ve akşam ritüeli</h3><p data-i18n="f4p">Duygu çarkından seç, tek satır not düş. Zamanla örüntülerini gösterir: hangi günlerin iyi gidiyor, ne seni zorluyor.</p></div>
-      <div class="card"><span class="ico">🏆</span><h3 data-i18n="f5t">Seriler ve haftalık özet</h3><p data-i18n="f5p">Maskotun Raf gününe göre sevinir, meraklanır, bazen sitem eder. Paylaşılabilir haftalık kartlar ve mini oyun Raf'ın Kulesi seni oyunda tutar.</p></div>
-      <div class="card"><span class="ico">🔒</span><h3 data-i18n="f6t">Gizlilik önce</h3><p data-i18n="f6p">Hesap yok, reklam yok. Verilerin telefonunda durur; yedeğini sen alır, sen taşırsın. Koçla konuştukların saklanmaz.</p></div>
-    </div>
+    <h2 class="sec-title" data-i18n="gTitle">İçeriden görünüm</h2>
+    <p class="sec-sub" data-i18n="gSub">Gerçek ekranlar — olduğu gibi.</p>
+  </div>
+  <div class="gallery">
+    <figure class="shot"><div class="phone"><img data-shot="plan" alt="" width="810" height="1560" loading="lazy"></div><figcaption data-i18n="gPlan">Plan — takvim görünümü</figcaption></figure>
+    <figure class="shot"><div class="phone"><img data-shot="plan-liste" alt="" width="810" height="1560" loading="lazy"></div><figcaption data-i18n="gPlanL">Plan — liste görünümü</figcaption></figure>
+    <figure class="shot"><div class="phone"><img data-shot="koc" alt="" width="810" height="1560" loading="lazy"></div><figcaption data-i18n="gKoc">Koç — yaz ya da konuş</figcaption></figure>
+    <figure class="shot"><div class="phone"><img data-shot="takip" alt="" width="810" height="1560" loading="lazy"></div><figcaption data-i18n="gTakip">Takip — tek dokunuşla işaretle</figcaption></figure>
+    <figure class="shot"><div class="phone"><img data-shot="istatistik" alt="" width="810" height="1560" loading="lazy"></div><figcaption data-i18n="gStats">İstatistik — ilerlemeni gör</figcaption></figure>
+    <figure class="shot"><div class="phone"><img data-shot="maskot" alt="" width="810" height="1560" loading="lazy"></div><figcaption data-i18n="gMaskot">Raf — gününe ortak maskot</figcaption></figure>
   </div>
 </section>
-
 <section id="personas" style="padding-top: 0;">
   <div class="wrap">
     <h2 class="sec-title" data-i18n="pTitle">Koçunu sen seç</h2>
@@ -212,18 +217,18 @@
     </div>
   </div>
 </section>
-
-<section id="shots" style="padding-top: 24px;">
+<section id="features">
   <div class="wrap">
-    <h2 class="sec-title" data-i18n="gTitle">İçeriden görünüm</h2>
-    <p class="sec-sub" data-i18n="gSub">Gerçek ekranlar — olduğu gibi.</p>
-  </div>
-  <div class="gallery">
-    <figure class="shot"><div class="phone"><img data-shot="plan" alt="" width="810" height="1560" loading="lazy"></div><figcaption data-i18n="gPlan">Plan — günün saat saat</figcaption></figure>
-    <figure class="shot"><div class="phone"><img data-shot="koc" alt="" width="810" height="1560" loading="lazy"></div><figcaption data-i18n="gKoc">Koç — yaz ya da konuş</figcaption></figure>
-    <figure class="shot"><div class="phone"><img data-shot="takip" alt="" width="810" height="1560" loading="lazy"></div><figcaption data-i18n="gTakip">Takip — tek dokunuşla işaretle</figcaption></figure>
-    <figure class="shot"><div class="phone"><img data-shot="istatistik" alt="" width="810" height="1560" loading="lazy"></div><figcaption data-i18n="gStats">İstatistik — ilerlemeni gör</figcaption></figure>
-    <figure class="shot"><div class="phone"><img data-shot="maskot" alt="" width="810" height="1560" loading="lazy"></div><figcaption data-i18n="gMaskot">Raf — gününe ortak maskot</figcaption></figure>
+    <h2 class="sec-title" data-i18n="fTitle">Az düğme, çok iş</h2>
+    <p class="sec-sub" data-i18n="fSub">Her şey tek dokunuş uzağında. Karmaşık menüler yerine seni tanıyan bir koç.</p>
+    <div class="grid">
+      <div class="card"><span class="ico">🤖</span><h3 data-i18n="f1t">Koçun Raf</h3><p data-i18n="f1p">Yazarak ya da konuşarak anlat: "yarın 14.00'e diş randevusu ekle" de, gerisini o halletsin. Planını okur, görev ekler, seriler kırılmadan seni dürter.</p></div>
+      <div class="card"><span class="ico">🗓️</span><h3 data-i18n="f2t">Günün tek ekranda</h3><p data-i18n="f2p">Saatli zaman çizelgesi, tekrarlayan görevler, günün yıldızlı işi ve sesli görev ekleme. Yapılan yeşil, kaçan kırmızı — günün tek bakışta okunur.</p></div>
+      <div class="card"><span class="ico">✅</span><h3 data-i18n="f3t">Alışkanlık takibi</h3><p data-i18n="f3p">Su, spor, uyku, kitap, takviye... Saatli hatırlatmalar, stok takibi, içindekilerle karışım kaydı ve şehrine göre 5 vakit hatırlatma.</p></div>
+      <div class="card"><span class="ico">💭</span><h3 data-i18n="f4t">Duygular ve akşam ritüeli</h3><p data-i18n="f4p">Duygu çarkından seç, tek satır not düş. Zamanla örüntülerini gösterir: hangi günlerin iyi gidiyor, ne seni zorluyor.</p></div>
+      <div class="card"><span class="ico">🏆</span><h3 data-i18n="f5t">Seriler ve haftalık özet</h3><p data-i18n="f5p">Maskotun Raf gününe göre sevinir, meraklanır, bazen sitem eder. Paylaşılabilir haftalık kartlar ve mini oyun Raf'ın Kulesi seni oyunda tutar.</p></div>
+      <div class="card"><span class="ico">🔒</span><h3 data-i18n="f6t">Gizlilik önce</h3><p data-i18n="f6p">Hesap yok, reklam yok. Verilerin telefonunda durur; yedeğini sen alır, sen taşırsın. Koçla konuştukların saklanmaz.</p></div>
+    </div>
   </div>
 </section>
 
@@ -276,7 +281,7 @@ const I18N = {
     pTitle: 'Koçunu sen seç', pSub: 'Aynı beyin, beş farklı karakter. Nasıl motive oluyorsan öyle konuşur.',
     p1: 'Kanka', p2: 'Centilmen', p3: 'Komutan', p4: 'Bilge', p5: 'Hoca',
     gTitle: 'İçeriden görünüm', gSub: 'Gerçek ekranlar — olduğu gibi.',
-    gPlan: 'Plan — günün saat saat', gKoc: 'Koç — yaz ya da konuş',
+    gPlan: 'Plan — takvim görünümü', gPlanL: 'Plan — liste görünümü', gKoc: 'Koç — yaz ya da konuş',
     gTakip: 'Takip — tek dokunuşla işaretle', gStats: 'İstatistik — ilerlemeni gör',
     gMaskot: 'Raf — gününe ortak maskot',
     prTitle: 'Verilerin sende kalır',
@@ -303,7 +308,7 @@ const I18N = {
     pTitle: 'Pick your coach', pSub: 'Same brain, five characters. It talks the way you get motivated.',
     p1: 'Buddy', p2: 'Butler', p3: 'Commander', p4: 'Sage', p5: 'Coach',
     gTitle: 'A look inside', gSub: 'Real screens — as they are.',
-    gPlan: 'Plan — your day, hour by hour', gKoc: 'Coach — type or talk',
+    gPlan: 'Plan — calendar view', gPlanL: 'Plan — list view', gKoc: 'Coach — type or talk',
     gTakip: 'Track — check off with one tap', gStats: 'Stats — see your progress',
     gMaskot: 'Raf — a mascot living your day',
     prTitle: 'Your data stays with you',
@@ -326,6 +331,7 @@ function setLang(lang) {
   }
   // Görseller de dile göre değişir
   document.getElementById('hero-shot').src = BASE + 's/' + lang + '-plan.png';
+  document.getElementById('hero-shot-2').src = BASE + 's/' + lang + '-plan-liste.png';
   for (const img of document.querySelectorAll('[data-shot]')) {
     img.src = BASE + 's/' + lang + '-' + img.getAttribute('data-shot') + '.png';
   }
